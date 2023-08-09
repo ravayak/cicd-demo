@@ -1,0 +1,16 @@
+FROM golang:1.20
+
+WORKDIR /usr/src/app
+
+# pre-copy/cache go.mod for pre-downloading dependencies and only redownloading them in subsequent builds if they change
+COPY go.mod go.sum ./
+RUN go mod download && go mod verify
+COPY . .
+
+# go build: C'est la commande pour construire un exécutable Go à partir du code source présent dans le répertoire courant. Cette commande compile le code source Go en un exécutable binaire.
+# -v: L'option -v ou --verbose est utilisée pour activer le mode verbeux. Cela signifie que la commande affichera des informations détaillées pendant son exécution, telles que les fichiers compilés et les packages utilisés.
+# -o /usr/local/bin/app: L'option -o ou --output spécifie le chemin et le nom du fichier de sortie de l'exécutable généré. Dans ce cas, l'exécutable sera nommé "app" et sera situé dans le répertoire /usr/local/bin.
+# En résumé, la commande go build -v -o /usr/local/bin/app ./... compile le code source Go présent dans le répertoire courant et ses sous-répertoires en un exécutable nommé "app", qui est ensuite placé dans le répertoire /usr/local/bin. L'option -v affiche des informations détaillées pendant la compilation, et le motif ./... garantit que tous les fichiers et packages du répertoire courant et de ses sous-répertoires sont inclus dans la construction de l'exécutable.
+RUN go build -v -o /usr/bin/app .
+EXPOSE 8081
+CMD ["app"]

@@ -1,0 +1,15 @@
+services:
+  golang-dev-test:
+    image: golang-dev
+    ports:
+      - 8081:8081
+    volumes:
+      - ./:/usr/src/app
+    # En ajoutant la ligne command: ["tail", "-f", "/dev/null"], vous empêchez le conteneur de se terminer immédiatement
+    # et il reste actif, vous permettant ainsi d'entrer dans le conteneur pour exécuter des commandes à la main.
+    #tail : C'est une commande Unix/Linux utilisée pour afficher les dernières lignes d'un fichier.
+    #-f : L'option "follow" permet de suivre en temps réel les modifications apportées à un fichier. Cela signifie que tail restera en cours
+    # d'exécution et affichera de nouvelles données au fur et à mesure qu'elles sont ajoutées au fichier.
+    #/dev/null : C'est un fichier spécial qui représente un trou noir virtuel dans le système d'exploitation.
+    # Toutes les données qui y sont écrites sont simplement supprimées, et y lire des données ne renvoie jamais rien.
+    command: ["tail", "-f", "/dev/null"]
