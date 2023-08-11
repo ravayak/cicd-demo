@@ -8,10 +8,10 @@ node {
         }
         stage("build"){
             sh "go build -v -o app ."
-            sh "git tag -l JENKINS"
-            sh "git tag -a -f -m 'Jenkins build' main"
+            sh "git tag -l build-jenkins"
+            sh "git tag -a -f -m 'Jenkins build' build-jenkins"
             sh "git --version"
-            sh "git push https://github.com/ravayak/cicd-demo"
+            sh "git push https://github.com/ravayak/cicd-demo build-jenkins"
 
         }
     }
