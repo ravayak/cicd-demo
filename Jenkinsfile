@@ -13,7 +13,8 @@ node {
             sh "git --version"
             withCredentials([usernamePassword(
                 credentialsId: 'GITHUB_TOKEN_ID',
-                passwordVariable: 'TOKEN']) {
+                passwordVariable: 'TOKEN',
+                usernameVariable: 'USER')]) {
             sh "git push https://antonny.kihm@protonmail.com:${TOKEN}@github.com/ravayak/cicd-demo.git build-jenkins"
             }
         }
