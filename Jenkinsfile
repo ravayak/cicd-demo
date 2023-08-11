@@ -9,7 +9,7 @@ node {
             sh "go build -v -o app ."
             sh "git add ."
             sh "git commit -m 'built app'"
-            sh "git push origin HEAD:main
+            sh "git push origin HEAD:main"
         }
     }
 }
