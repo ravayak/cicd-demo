@@ -12,7 +12,7 @@ node {
             sh "git tag -a -f -m 'Jenkins build' build-jenkins"
             sh "git --version"
             withCredentials([usernamePassword(
-                credentialsId: 'Jenkins',
+                credentialsId: 'GITHUB_TOKEN_ID',
                 passwordVariable: 'TOKEN',
                 usernameVariable: 'USER')]) {
                 sh 'git push https://${USER}:${TOKEN}@github.com/ravayak/cicd-demo.git build-jenkins'
