@@ -15,7 +15,7 @@ node {
                 credentialsId: 'GITHUB_TOKEN_ID',
                 passwordVariable: 'TOKEN',
                 usernameVariable: 'USER')]) {
-                sh "git push https://${USER}:${TOKEN}@github.com/ravayak/cicd-demo.git build-jenkins"
+                sh 'git push https://${USER}:${TOKEN}@github.com/ravayak/cicd-demo.git build-jenkins'
             }
         }
     }
