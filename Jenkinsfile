@@ -12,7 +12,7 @@ node {
             sh "git tag -a -f -m 'Jenkins build' build-jenkins"
             sh "git --version"
             sshagent(credentials: ['Jenkins']) {
-                sh "git push git@github.com:ravayak/cicd-demo.git build-jenkins")
+                sh "git push git@github.com:ravayak/cicd-demo.git build-jenkins"
             }    
         }
     }
