@@ -8,7 +8,6 @@ node {
         }
         stage("build"){
             sh "go build -v -o app ."
-            sh "git checkout build"
             sh "git tag -l JENKINS"
             sh "git tag -a -f -m Jenkins build JENKINS"
             sh "git --version"
