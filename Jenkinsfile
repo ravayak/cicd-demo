@@ -6,7 +6,7 @@ node {
              checkout scm 
         }
         stage("build"){
-            go build -v -o app .
+            sh "go build -v -o app ."
         }
     }
 }
