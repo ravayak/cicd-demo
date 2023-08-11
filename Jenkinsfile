@@ -5,7 +5,6 @@ node {
         stage("clone"){
              checkout scm 
         }
-        sh 'go version'
         stage("build"){
             go build -v -o app .
         }
