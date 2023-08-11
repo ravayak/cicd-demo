@@ -11,7 +11,7 @@ node {
             sh "git tag -l JENKINS"
             sh "git tag -a -f -m 'Jenkins build' main"
             sh "git --version"
-            sh "git push https://github.com/ravayak/cicd-demo.git"
+            sh "git push git@github.com:ravayak/cicd-demo.git"
 
         }
     }
