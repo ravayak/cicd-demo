@@ -13,11 +13,9 @@ node {
             sh "git --version"
             withCredentials([usernamePassword(
                 credentialsId: 'GITHUB_TOKEN_ID',
-                passwordVariable: 'TOKEN',
-                usernameVariable: 'USER')]) {
-            sh "git push https://${USER}:${TOKEN}@github.com/ravayak/cicd-demo.git mybranch build-jenkins"
+                passwordVariable: 'TOKEN']) {
+            sh "git push https://antonny.kihm@protonmail.com:${TOKEN}@github.com/ravayak/cicd-demo.git build-jenkins"
             }
-
         }
     }
 }
