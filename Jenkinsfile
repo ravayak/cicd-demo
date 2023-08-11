@@ -11,12 +11,9 @@ node {
             sh "git tag -l build-jenkins"
             sh "git tag -a -f -m 'Jenkins build' build-jenkins"
             sh "git --version"
-            withCredentials([usernamePassword(
-                credentialsId: 'GITHUB_TOKEN_ID',
-                passwordVariable: 'TOKEN',
-                usernameVariable: 'USER')]) {
-                sh 'git push https://${USER}:${TOKEN}@github.com/ravayak/cicd-demo.git build-jenkins'
-            }
+            sshagent(credentials: ['Jenkins']) {
+                sh "git push git@github.com:ravayak/cicd-demo.git build-jenkins")
+            }    
         }
     }
 }
