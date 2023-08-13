@@ -17,7 +17,6 @@ node {
             sh 'docker build . -t ynno/go-cicd-demo -f DockerFile-build'
         }
         stage('deliver') {
-            steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'GITHUB_TOKEN',
                     passwordVariable: 'TOKEN',
@@ -29,7 +28,6 @@ node {
                     sh "docker login -u ${env.dockerhubUser} -p ${env.dockerhubPassword}"
                     sh 'docker push ynno/go-cicd-demo'
                 }
-            }
         }
     }
 }
