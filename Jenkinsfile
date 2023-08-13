@@ -9,6 +9,8 @@ node {
         }
         stage("build"){
             sh "go build -v -o app ."
+            sh 'git config --global user.email "antonny.kihm@protonmail.com"'
+            sh 'git config --global user.name "ravayak"'
             sh "git tag -l build-jenkins"
             sh "git tag -a -f -m 'Jenkins build' build-jenkins"
             sh "git --version"
