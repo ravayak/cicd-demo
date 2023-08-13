@@ -17,7 +17,7 @@ node {
         stage('deliver') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'GITHUB_TOKEN_ID',
+                    credentialsId: 'GITHUB_TOKEN',
                     passwordVariable: 'TOKEN',
                     usernameVariable: 'USER')]) {
                     sh 'git push https://${USER}:${TOKEN}@github.com/ravayak/cicd-demo.git build-jenkins'
