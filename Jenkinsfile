@@ -14,7 +14,7 @@ node {
             sh "git tag -l build-jenkins"
             sh "git tag -a -f -m 'Jenkins build' build-jenkins"
             sh "git --version"
-            sh 'docker build . -t ynno/go-cicd-demo'
+            sh 'docker build . -t ynno/go-cicd-demo -f DockerFile-build'
         }
         stage('deliver') {
             steps {
