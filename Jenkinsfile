@@ -58,6 +58,3 @@ node {
         }
     }
 }
-
-
-docker push ubuntu:latest 9532-2-4-250-10.ngrok-free.app/ubuntu:latest
