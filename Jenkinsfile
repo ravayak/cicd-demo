@@ -49,9 +49,9 @@ node {
             }
 
             // exemple de push sur un registry local créé avec nexus : https://www.sonatype.com/products/sonatype-nexus-repository
-            withCredentials([usernamePassword(credentialsId: 'dockerhub-local', passwordVariable: 'dockerhub-localPassword', usernameVariable: 'dockerhub-localUser')]) {
+            withCredentials([usernamePassword(credentialsId: 'dockerhublocal', passwordVariable: 'dockerhublocalPassword', usernameVariable: 'dockerhublocalUser')]) {
                 sh "docker tag ynno/go-cicd-demo 9532-2-4-250-10.ngrok-free.app/go-cicd-demo:latest"
-                sh "docker login 9532-2-4-250-10.ngrok-free.app -u ${env.dockerhub-localUser} -p ${env.dockerhub-localPassword}"
+                sh "docker login 9532-2-4-250-10.ngrok-free.app -u ${env.dockerhublocalUser} -p ${env.dockerhublocalPassword}"
                 sh 'docker push 9532-2-4-250-10.ngrok-free.app/go-cicd-demo:latest'
             }
 
